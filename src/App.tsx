@@ -1,25 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppReducer from './reducer'
+import { StoreProvider } from "./useStore";
+
+
+import DesktopIcons from './Components/DesktopIcons';
+import TaskBar from './Components/TaskBar';
+import Desktop from './Components/Desktop';
+import { Container } from './Components/Layout';
+
+const storeKey = "APP_STORE"
+
+
+let initialState = {};
+
+// Localstorage
+try {
+  const store = localStorage.getItem(storeKey);
+  initialState = store ? JSON.parse(store) : initialState
+} catch { }
+
+const reducer = (state: any, action: any) => {
+  const newState = AppReducer(state, action)
+  localStorage.setItem(storeKey, JSON.stringify(newState))
+  return newState
+}
+// END Localstorage
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoreProvider reducer={reducer} initialState={initialState}>
+      <Container>
+        <Desktop>
+          <DesktopIcons />
+        </Desktop>
+        <TaskBar />
+      </Container>
+    </StoreProvider>
   );
 }
 

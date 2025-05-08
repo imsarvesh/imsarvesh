@@ -38,7 +38,7 @@ const classes = mergeStyleSets({
 
 
 const icons = [
-    { name: 'LinkedIn', src: '/icons/linkedin.png', link: 'https://www.linkedin.com/in/imsarvesh/' },
+    { name: 'LinkedInn', src: '/icons/linkedin.png', link: 'https://www.linkedin.com/in/imsarvesh/' },
     { name: 'Twitter', src: '/icons/twitter.png', link: 'https://twitter.com/imsarvesh_' },
     { name: 'Facebook', src: '/icons/facebook-new.png', link: 'https://www.facebook.com/iamsarvesh' },
     { name: 'Instagram', src: '/icons/instagram-new.png', link: 'https://www.instagram.com/imsarvesh/' },
